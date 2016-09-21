@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+produto_valido:
+  title: meu produto valido
+  description: MyText
+  price: 10.00
+
+two:
+  title: MyString
+  description: MyText
+  price: 9.99
+
+produto_0:
+  title: MyString
+  description: MyText
+  price: 0

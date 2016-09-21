@@ -1,0 +1,7 @@
+$('#cart').html("<%= escape_javascript render @cart  %>");
+
+if($('#cart li').length == 1) {
+    $('#cart').show('blind',1200)
+}
+
+$('#current_item').effect('highlight');

@@ -1,0 +1,41 @@
+<%= form_for(@order) do |f| %>
+
+
+
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address %>
+      <%= f.text_area :address %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="field">
+        <%= f.label :pay_type %>
+        <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Selecione uma opção' %>
+    </div>
+
+    <div id="actions">
+      <%= f.submit %>
+    </div>
+
+
+
+<% end %>

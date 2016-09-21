@@ -1,0 +1,25 @@
+<% if notice %>
+    <p id="notice"> <%= notice %> </p>
+<% end %>
+
+
+<h1>catalogo de produtos</h1>
+
+
+<% cache ['store', Product.latest ] do%>
+
+<% @products.each do |product| %>
+
+    <% cache ['product', product] do %>
+    <div>
+      <p><%= product.title %> </p>
+      <p><%= product.description %></p>
+      <%= number_to_currency(product.price) %>
+      <%= button_to 'Add carrinho', line_items_path(product_id: product), remote: true %>
+      <hr/>
+    </div>
+    <% end %>
+
+<% end %>
+
+<% end %>

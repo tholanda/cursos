@@ -1,0 +1,8 @@
+<h2>seu carrinho</h2>
+
+<ul>
+  <%= render @cart.line_items %>
+</ul>
+
+<%= button_to 'limpar carrinho', @cart, method: :delete %>
+<%= button_to 'Finalizar pedido', new_order_path, method: :get %>

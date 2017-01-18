@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	
+	<title>Lista de Alunos</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+
+<body>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de Alunos</h1>
+		</div>
+		
+		<div class="panel-body">
+			<form class="form-inline" method="POST" th:object="${aluno}" th:action="@{/alunos}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="hidden" th:field=*{id}/>
+					<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}"/>
+					<input type="text" class="form-control" placeholder="Idade" th:field="*{idade}"/>
+					<button type="submit" class="btn btn-primary"><span th:text="${aluno.id == null}? Salvar : Atualizar"/></button>
+				</div>
+			</form>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Idade</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="aluno : ${alunos}">
+						<td th:text="${aluno.nome}"></td>
+						<td th:text=${aluno.idade}></td>
+						<td><a th:href="${'/alunos/editar/' + aluno.id}">Editar</a>
+							<a th:href="${'/alunos/deletar/' + aluno.id}">Deletar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
